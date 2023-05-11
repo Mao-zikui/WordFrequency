@@ -6,11 +6,24 @@
  * User Manual available at https://docs.gradle.org/6.9.2/userguide/building_java_projects.html
  */
 
+/*plugins {
+ *   // Apply the java-library plugin for API and implementation separation.
+ *  `java-library`
+ *	id 'java'
+ *	id 'org .jetbrains.kotlin.jvm"version '1.5.21'
+ *}
+ */
+
 plugins {
-    // Apply the java-library plugin for API and implementation separation.
-    `java-library`
-	id 'java'
-	id 'org .jetbrains.kotlin.jvm"version '1.5.21'
+    id"application"
+}
+apply plugin :"java"
+ext {
+   javaMainClass ="com.mao.WordFrplugins"
+}
+
+application {
+    mainClassName = javaMainClass
 }
 
 repositories {

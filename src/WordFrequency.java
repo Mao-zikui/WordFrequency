@@ -18,24 +18,23 @@ public class WordFrequency {
             String s;
             StringBuffer sb = new StringBuffer();
             // 将读取到的文件字符放到StringBuffer中
-            while (br.readLine() != null) {
-                s = br.readLine();
-                sb.append(s);
+            while ((s = br.readLine()) != null) {
+                sb.append(s.toLowerCase());
             }
             Map<String,Integer> map = new HashMap<String, Integer>();
             // 使用StringTokenizer构造方法 根据多种字符进行分割
-            StringTokenizer st = new StringTokenizer(sb.toString(),",.!; \n");
+            StringTokenizer st = new StringTokenizer(sb.toString(),",.- \n");
             while (st.hasMoreTokens()) {
                 // 将到下一个分隔符的字符串取出
                 String letter = st.nextToken();
-                int count;
-                // 当某个单词未出现时 记下单词并加一 出现过则获取该单词对应的key 并将对应次数加一
+                int i;
+                // 当该单词未出现时 记下单词并加一 出现过则获取该单词对应的key 并将对应次数加一
                 if (map.get(letter) == null) {
-                    count = 1;
+                    i = 1;
                 } else {
-                    count = map.get(letter).intValue() + 1;
+                    i = map.get(letter).intValue() + 1;
                 }
-                map.put(letter,count);
+                map.put(letter,i);
             }
             // 将map中的元素放到treeset集合中进行排序
             Set<WordEntity> set = new TreeSet<WordEntity>();
